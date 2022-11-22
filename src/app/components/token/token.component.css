@@ -1,0 +1,20 @@
+.color {
+    width: 60px;
+    height: 60px;
+    background-color: rgb(245, 169, 28);
+    box-shadow: 0 0px 15px 2px rgb(73, 71, 66);
+}
+
+.os {
+    border-radius: 50%;
+}
+
+.xs {
+    width: 50px;
+    height: 50px;
+    transform: rotate(45deg);
+}
+
+.hiden {
+    display: none;
+}

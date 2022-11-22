@@ -1,0 +1,19 @@
+.box {
+    width: 7em;
+    height: 7em;
+    background-color: crimson;
+
+    border-radius: 1em;
+
+    box-shadow: 0 .3em .6em .01em rgb(143, 32, 54);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.box:hover {
+    background-color: rgb(238, 82, 113);
+}
+

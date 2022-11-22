@@ -1,0 +1,10 @@
+<div class="game">
+  <app-board (eventPutToken)="put($event)"></app-board>
+
+  <div class="dashboard">
+    <app-turn></app-turn>
+    <button type="button" class="btn btn-danger" (click)="reset()">
+      Reiniciar
+    </button>
+  </div>
+</div>

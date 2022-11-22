@@ -1,16 +1,34 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { BoardComponent } from './components/board/board.component';
+import { BoxComponent } from './components/box/box.component';
+import { TokenComponent } from './components/token/token.component';
+import { TurnComponent } from './components/turn/turn.component';
+import { GameComponent } from './components/game/game.component';
+import { BoxDirective } from './directives/box.directive';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        BoardComponent,
+        BoxComponent,
+        TokenComponent,
+        TurnComponent,
+        GameComponent,
+        BoxDirective,
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule implements OnInit{
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+ }

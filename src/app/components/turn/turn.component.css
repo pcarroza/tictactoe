@@ -1,0 +1,13 @@
+.turn {
+    
+    width: 7em;
+    height: 7em;
+    background-color: crimson;
+    
+    border-radius: 1em;
+    
+    box-shadow: 0 .3em .6em .01em rgb(143, 32, 54);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

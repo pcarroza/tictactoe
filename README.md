@@ -1,6 +1,26 @@
 # Tictactoe
 
+Tictactoe es el famoso juego de las Tres en Raya. El proyecto tiene como propósito enseñar los principio de 
+la Programación Orientada a Objetos (POO), Análisis y Diseño Orientado a Objetos (ADOO), Código Limipio y 
+los fundamentos del Framework AngularTS. El proyecto está en proceso de desarrollo.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
+
+# Arquitectura
+
+## Interfaz Gráfica
+
+![Interfaz Tictactoe](https://user-images.githubusercontent.com/58323802/203443226-db43a96b-f65c-4167-bc01-fef20469b664.png)
+
+## Diagrama de Componentes AngularTS.
+
+![Diagrama de Componentes AngularTS](https://user-images.githubusercontent.com/58323802/203445194-1a1840cf-7445-42eb-83b2-506686c6b57d.svg)
+
+## Diagrama de Clases. Modelos y servicios.
+
+![Diagrama de Clases - modelos y serviciones AngularTS](https://user-images.githubusercontent.com/58323802/203445400-4e58facc-3b5b-4253-94f7-736765f4ee07.svg)
+
+
 
 ## Development server
 

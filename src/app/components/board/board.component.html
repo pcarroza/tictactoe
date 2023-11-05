@@ -1,8 +1,6 @@
 <div class="board">
-
-    <app-box *ngFor="let coordinate of coordinates" 
-        (eventPutColor)="put($event)" 
-        [coordinate]="coordinate"></app-box>
-    
+  <app-box
+    *ngFor="let coordinate of coordinates"
+    [coordinate]="coordinate"
+  ></app-box>
 </div>
-

@@ -2,27 +2,27 @@ import { Direction } from './direction';
 
 export class Coordinate {
   
-  private row: number;
+  private row_: number;
 
-  private column: number;
+  private column_: number;
 
   public static DIMENSION: number = 3;
 
   constructor(row: number, column: number) {
-    this.row = row;
-    this.column = column;
+    this.row_ = row;
+    this.column_ = column;
   }
 
-  get ROW(): number {
-    return this.row;
+  get row(): number {
+    return this.row_;
   }
 
-  get COLUMN(): number {
-    return this.column;
+  get column(): number {
+    return this.column_;
   }
   
   inDirection(coordinate: Coordinate): Direction {
-    let direction: Direction | undefined;
+    let direction: Direction;
     if (this.inRow(coordinate)) {
       direction = Direction.HORIZONTAL;
     } else if (this.inColumn(coordinate)) {
@@ -38,23 +38,22 @@ export class Coordinate {
   }
 
   inColumn(coordinate: Coordinate) {
-    return this.COLUMN === coordinate.COLUMN;
+    return this.column === coordinate.column;
   }
 
   inRow(coordinate: Coordinate): boolean {
-    return this.ROW === coordinate.ROW;
+    return this.row === coordinate.row;
   }
 
   inDiagonal(): boolean {
-    return this.ROW - this.COLUMN === 0;
+    return this.row - this.column === 0;
   }
 
   inInverse(): boolean {
-    return this.ROW + this.COLUMN === Coordinate.DIMENSION + 1;
+    return this.row + this.column === Coordinate.DIMENSION + 1;
   }
 
   isEquals(coordinate: Coordinate): boolean {
-    return this.ROW === coordinate.ROW && this.COLUMN === coordinate.COLUMN;
+    return this.row === coordinate.row && this.column === coordinate.column;
   }
-
 }

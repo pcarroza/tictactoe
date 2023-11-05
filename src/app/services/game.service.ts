@@ -4,14 +4,14 @@ import { Color } from '../models/color';
 import { Coordinate } from '../models/coordinate';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GameService {
-  
-  private game: Game
+
+  private game: Game;
 
   constructor() {
-    this.game = new Game;
+    this.game = new Game();
   }
 
   put(coordinate: Coordinate): void {
@@ -54,7 +54,7 @@ export class GameService {
     this.game.remove(coordinate);
   }
 
-  changeToTurnInitial(): void {
-    this.game.changeToTurnInitial();
+  changeTurnToTnitial(): void {
+    this.game.reset();
   }
 }

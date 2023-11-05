@@ -17,23 +17,19 @@ import { BoxComponent } from '../box/box.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BoardComponent implements OnInit {
-
+  
   @ViewChildren(BoxComponent) boxes!: QueryList<BoxComponent>;
-
-  @Output() eventPutToken = new EventEmitter<Coordinate>();
 
   coordinates: Coordinate[] = [];
 
-  constructor() {}
-
-  put(coordinate: Coordinate): void {
-    this.eventPutToken.emit(coordinate);
+  ngOnInit(): void {
+    this.generateBoxes();
   }
 
   clear(): void {
     this.boxes.forEach((box) => box.clear());
   }
-  
+
   private generateBoxes(): void {
     for (let i: number = 1; i <= Coordinate.DIMENSION; i++) {
       for (let j: number = 1; j <= Coordinate.DIMENSION; j++) {
@@ -41,8 +37,5 @@ export class BoardComponent implements OnInit {
       }
     }
   }
-
-  ngOnInit(): void {
-    this.generateBoxes();
-  }
 }
+

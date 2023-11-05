@@ -19,7 +19,7 @@ export class Turn {
     this.rest = 0;
   }
 
-  changeTurn(): void {
+  change(): void {
     this.rest = (this.rest + 1) % this.divider;
   }
 }

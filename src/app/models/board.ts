@@ -4,7 +4,6 @@ import { Turn } from './turn';
 import { Direction } from './direction';
 
 export class Board {
-  
   private flat: Map<Color, Set<Coordinate>>;
 
   private turn: Turn;
@@ -20,31 +19,24 @@ export class Board {
   }
 
   isComplete(): boolean {
-    let numberOfTokens: number = 0;
-    for (let color of colors) {
-      this.flat.get(color)?.forEach(() => (numberOfTokens += 1));
-    }
+    let numberOfTokens: number = colors.reduce((acc, color) => {
+      return acc + (this.flat.get(color)?.size || 0);
+    }, 0);
     return numberOfTokens === Coordinate.DIMENSION * colors.length;
   }
 
   existTicTacToe(): boolean {
-    let coordinates: Set<Coordinate> | undefined = this.flat.get(
-      this.turn.take()
-    );
-    if (coordinates?.size != Coordinate.DIMENSION) {
+    let flat: Set<Coordinate> | undefined = this.flat.get(this.turn.take());
+    if (flat?.size != Coordinate.DIMENSION) {
       return false;
     }
-    let coordinatesArray: Coordinate[] = [...coordinates];
-    let direction: Direction = coordinatesArray[0].inDirection(
-      coordinatesArray[1]
-    );
+    let coordinates: Coordinate[] = [...flat];
+    let direction: Direction = coordinates[0].inDirection(coordinates[1]);
     if (direction === Direction.NON_EXISTENT) {
       return false;
     }
     for (let i: number = 1; i < Coordinate.DIMENSION - 1; i++) {
-      if (
-        coordinatesArray[i].inDirection(coordinatesArray[i + 1]) != direction
-      ) {
+      if (coordinates[i].inDirection(coordinates[i + 1]) != direction) {
         return false;
       }
     }
@@ -60,13 +52,7 @@ export class Board {
   }
 
   getColor(coordinate: Coordinate): Color {
-    let color_: Color = Color.NONE;
-    colors.forEach((color) => {
-      if (this.isFull(coordinate, color)) {
-        color_ = color;
-      }
-    });
-    return color_;
+    return colors.find((color) => this.isFull(coordinate, color)) || Color.NONE;
   }
 
   private isFull(target: Coordinate, color: Color): boolean {
@@ -80,16 +66,10 @@ export class Board {
   }
 
   remove(target: Coordinate): void {
-    let coordinates: any = this.flat.get(this.turn.take());
-    let coordinateArrays: Coordinate[] = [...coordinates];
-    coordinateArrays.filter((coordinate) => !coordinate.isEquals(target));
-    this.flat.get(this.turn.take())?.clear();
-    coordinateArrays.forEach((coordinate) => {
-      this.flat.get(this.turn.take())?.add(coordinate);
-    });
+    this.flat.get(this.turn.take())?.delete(target);
   }
 
-  changeToTurnInitial(): void {
+  reset(): void {
     this.turn.reset();
   }
 
@@ -98,7 +78,7 @@ export class Board {
   }
 
   change(): void {
-    this.turn.changeTurn();
+    this.turn.change();
   }
 
   clear(): void {

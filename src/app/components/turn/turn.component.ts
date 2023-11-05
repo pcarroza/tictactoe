@@ -17,7 +17,7 @@ export class TurnComponent {
   }
   
   reset(): void {
-    this.gameService.changeToTurnInitial();
+    this.gameService.changeTurnToTnitial();
     this.tokenComponent.setColor(this.gameService.take());
   }
 }

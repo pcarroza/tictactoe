@@ -50,7 +50,7 @@ export class Game {
     this.board.remove(coordinate);
   }
 
-  changeToTurnInitial(): void {
-    this.board.changeToTurnInitial();
+  reset(): void {
+    this.board.reset();
   }
 }

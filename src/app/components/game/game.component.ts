@@ -6,7 +6,6 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { Coordinate } from 'src/app/models/coordinate';
 import { GameService } from 'src/app/services/game.service';
 import { TurnComponent } from '../turn/turn.component';
 
@@ -23,12 +22,6 @@ export class GameComponent implements OnInit, AfterViewInit {
   @ViewChild(TurnComponent) turnComponent!: TurnComponent;
 
   constructor(private gameService: GameService) {}
-
-  put(coordinate: Coordinate): void {
-    this.gameService.put(coordinate);
-    this.gameService.change();
-    this.turnComponent.take();
-  }
 
   reset() {
     this.gameService.clear();

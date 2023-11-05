@@ -8,27 +8,22 @@ import { BoxComponent } from './components/box/box.component';
 import { TokenComponent } from './components/token/token.component';
 import { TurnComponent } from './components/turn/turn.component';
 import { GameComponent } from './components/game/game.component';
-import { BoxDirective } from './directives/box.directive';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        BoardComponent,
-        BoxComponent,
-        TokenComponent,
-        TurnComponent,
-        GameComponent,
-        BoxDirective,
-    ],
-    imports: [
-        BrowserModule,
-        FormsModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    BoardComponent,
+    BoxComponent,
+    TokenComponent,
+    TurnComponent,
+    GameComponent,
+  ],
+  imports: [BrowserModule, FormsModule],
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule implements OnInit{
+export class AppModule implements OnInit {
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
- }
+}

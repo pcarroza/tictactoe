@@ -13,15 +13,15 @@ import { Coordinate } from '../../models/coordinate';
 
 @Component({
   selector: 'app-box',
-  templateUrl: './box.component.html',
+  template: `<div (click)="put()" class="box">
+              <app-token></app-token>
+            </div>`,
   styleUrls: ['./box.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BoxComponent {
-  
-  @ViewChild(TokenComponent) tokenComponent!: TokenComponent;
 
-  @Output() eventPutColor = new EventEmitter<Coordinate>();
+  @ViewChild(TokenComponent) tokenComponent!: TokenComponent;
 
   @Input() coordinate!: Coordinate;
 
@@ -32,8 +32,10 @@ export class BoxComponent {
   put(): void {
     if (!this.isFull) {
       this.isFull = true;
-      this.setColor(this.gameService.take());
-      this.eventPutColor.emit(this.coordinate);
+      this.color = this.gameService.take();
+      this.gameService.put(this.coordinate);
+      this.gameService.change();
+      this.gameService.take();
     }
   }
 
@@ -42,7 +44,7 @@ export class BoxComponent {
     this.isFull = false;
   }
 
-  setColor(color: Color): void {
+  set color(color: Color) {
     this.tokenComponent.setColor(color);
   }
 }
